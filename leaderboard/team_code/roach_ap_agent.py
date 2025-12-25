@@ -419,6 +419,9 @@ class ROACHAgent(autonomous_agent.AutonomousAgent):
 			distance = np.linalg.norm(p2_p1)
 			p2_p1_hat = p2_p1 / (distance + 1e-4)
 
+			# if distance <= 3.5:
+				# return target_vehicle
+
 			angle_to_car = np.degrees(np.arccos(v1_hat.dot(p2_p1_hat)))
 			angle_between_heading = np.degrees(np.arccos(o1.dot(o2)))
 

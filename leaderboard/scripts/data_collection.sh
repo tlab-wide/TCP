@@ -17,16 +17,15 @@ export REPETITIONS=1 # multiple evaluation runs
 export RESUME=True
 export DATA_COLLECTION=True
 
+artifacts_prefix="../leaderboard_artifacts"
 
 # Roach data collection
-export ROUTES=leaderboard/data/TCP_training_routes/routes_town01.xml
+export ROUTES=$artifacts_prefix/rsu.xml
 export TEAM_AGENT=team_code/roach_ap_agent.py
 export TEAM_CONFIG=roach/config/config_agent.yaml
-export CHECKPOINT_ENDPOINT=data_collect_town01_results.json
+export CHECKPOINT_ENDPOINT=$artifacts_prefix/results.json
 export SCENARIOS=leaderboard/data/scenarios/all_towns_traffic_scenarios.json
-export SAVE_PATH=data/data_collect_town01_results/
-
-
+export SAVE_PATH=$artifacts_prefix/data_collection_results/
 
 python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator.py \
 --scenarios=${SCENARIOS}  \
@@ -41,5 +40,3 @@ python3 ${LEADERBOARD_ROOT}/leaderboard/leaderboard_evaluator.py \
 --resume=${RESUME} \
 --port=${PORT} \
 --trafficManagerPort=${TM_PORT}
-
-
